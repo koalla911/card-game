@@ -10,60 +10,15 @@ public struct Consts
 		public const string Entry = "Entry";
 		public const string Persistent = "Persistent";
 		public const string Lobby = "Lobby";
-		public const string FirstLocation = "Siberia";
 	}
 
 	public struct Layers
 	{
-		public const string Animal = "Animal";
 		public const string Obstacle = "Obstacle";
 	}
 
 	public struct Biomes
 	{
-		public const string Taiga = "Taiga";
-	}
-
-	public struct Animals
-	{
-		public const string Empty = "";
-
-		public const string Bear = "Bear";
-		public const string Boar = "Boar";
-		public const string Deer = "Deer";
-		public const string Fox = "Fox";
-		public const string Moose = "Moose";
-		public const string Owl = "Owl";
-		public const string Panther = "Panther";
-		public const string Rabbit = "Rabbit";
-		public const string Raccoon = "Raccoon";
-		public const string Seagul = "Seagul";
-		public const string Spider = "Spider";
-		public const string Tiger = "Tiger";
-		public const string Wolf = "Wolf";
-	}
-	
-	public struct AnimalSkins
-	{
-		public const string Empty = "";
-
-		public const string Bear_Brown = "Bear/Brown";
-		public const string Bear_BrownCub = "Bear/BrownCub";
-		public const string Deer_Common = "Deer/Common";
-		public const string Deer_Fawn = "Deer/Fawn";
-		public const string Deer_Female = "Deer/Female";
-		public const string Fox_Common = "Fox/Common";
-		public const string Fox_CommonCub = "Fox/CommonCub";
-		public const string Rabbit_BrownWhite = "Rabbit/BrownWhite";
-		public const string Rabbit_Gray = "Rabbit/Gray";
-		public const string Rabbit_GrayCub = "Rabbit/GrayCub";
-		public const string Rabbit_WhiteSpots = "Rabbit/WhiteSpots";
-		public const string Spider_Green = "Spider/Green";
-		public const string Spider_Red = "Spider/Red";
-		public const string Spider_Yellow = "Spider/Yellow";
-		public const string Tiger_Common = "Tiger/Common";
-		public const string Wolf_Common = "Wolf/Common";
-		public const string Wolf_CommonCub = "Wolf/CommonCub";
 	}
 
 	public static readonly Dictionary<Hue, Color32> Colors = new Dictionary<Hue, Color32>
@@ -92,9 +47,6 @@ public struct Consts
 		public const string QuestStart = "quest_start";
 		public const string QuestEnd = "quest_end";
 		public const string QuestQuit = "quest_quit";
-		public const string PlayerPathCheck = "player_path_check";
-		public const string TakePhoto = "take_photo";
-		public const string QuitPhoto = "quit_photo";
 		public const string WindowOpen = "window_open";
 		public const string FirstSessionSteps = "first_session_steps";
 	}
@@ -145,7 +97,6 @@ public struct Consts
 
 		public const string Tap = "tap";
 		public const string Button = "button";
-		public const string TapOnAnimal = "tap_on_animal";
 		public const string DoubleTap = "double_tap";
 		public const string ZoomIn = "zoom_in";
 		public const string ZoomOut = "zoom_out";
@@ -154,10 +105,7 @@ public struct Consts
 
 	public struct Sources
 	{
-		public const string GalleryAchievement = "gallery_achievement";
 		public const string Bought = "bought";
-		public const string EnergyBought = "energy_bought";
-		public const string FramesBought = "frames_bought";
 		public const string StartQuest = "start_quest";
 		public const string EndQuest = "end_quest";
 	}
@@ -180,15 +128,6 @@ public struct Consts
 	}
 }
 
-public enum EvaluationCriterion
-{
-	Aiming,
-	Distance,
-	Count,
-	Angle,
-	Pose
-}
-
 public enum Hue
 {
 	Red,
@@ -203,23 +142,4 @@ public enum QuestStatus
 	Locked = 0,
 	Available = 1,
 	Completed = 2,
-}
-
-public enum BadgeAnchorMode
-{
-	Top = 0,
-	Right = 1,
-}
-
-public enum UniqueBadgeType
-{
-	Baby = 1,
-	Family = 2,
-	Couple = 3,
-	WholeInFrame = 4,
-	ThreeQuarterView = 5,
-	FullFaceView = 6,
-	ProfileView = 7,
-	BackView = 8,
-	CloseUpView = 9,
 }

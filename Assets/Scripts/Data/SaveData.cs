@@ -8,7 +8,6 @@ public class SaveData
 	public int Coins { get; set; }
 	public SettingsSaveData Settings { get; set; } = new();
 	public QuestsSaveData Quests { get; set; } = new();
-	public BestiarySaveData Bestiary { get; set; } = new();
 	public TimebasedRewardSaveData TimebasedReward { get; set; } = new();
 	public TutorialsSaveData Tutorials { get; set; } = new();
 	public EnergySaveData Energy { get; set; } = new();
@@ -32,18 +31,6 @@ public class QuestStatusSaveData
 	public int Attempts { get; set; } = 0;
 	public int CompletedAttempts { get; set; } = 0;
 	//public QuestStatus Status { get; set; } = QuestStatus.Locked;
-}
-
-public class BestiarySaveData
-{
-	public Dictionary<string, BestiaryBiomeSaveData> Biomes { get; set; } = new();
-}
-
-public class BestiaryBiomeSaveData
-{
-	public Dictionary<string, bool> AppliedRewards { get; set; } = new();
-	public Dictionary<string, bool> AlreadyWasShown { get; set; } = new();
-	public Dictionary<string, string> LastPhotoFilePath { get; set; } = new();
 }
 
 public class TimebasedRewardSaveData
