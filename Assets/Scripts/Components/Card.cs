@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace CardRandomization
+namespace Game
 {
-	public class Program
+	public class Card
 	{
 		static int setSize = 6;
 		static int cardCount = default;
 
-		public static void Main(string[] args)
+		/*public static void Main(string[] args)
 		{
 			do
 			{
@@ -27,9 +27,9 @@ namespace CardRandomization
 				}
 
 			} while (cardCount != -1);
-		}
+		}*/
 
-		private static Dictionary<int, float> FillSet(int size)
+		private Dictionary<int, float> FillSet(int size)
 		{
 			Dictionary<int, float> cardSet = new();
 			float percent = 1f;
@@ -47,7 +47,7 @@ namespace CardRandomization
 			return cardSet;
 		}
 
-		private static List<int> Cards(int setSize, Dictionary<int, float> cardSet)
+		private List<int> Cards(int setSize, Dictionary<int, float> cardSet)
 		{
 			List<int> cards = new();
 
@@ -55,7 +55,7 @@ namespace CardRandomization
 			{
 				Random randomCard = new();
 				int currentCard = randomCard.Next(1, cardSet.Keys.Count);
-				float probability = GetProbability();
+				float probability = GetRandomProbability();
 
 				if (cardSet[currentCard] <= probability)
 				{
@@ -69,7 +69,7 @@ namespace CardRandomization
 			return cards;
 		}
 
-		private static float GetProbability()
+		public float GetRandomProbability()
 		{
 			Random random = new();
 			float probability = (float)random.NextDouble();
