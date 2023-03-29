@@ -10,25 +10,6 @@ namespace Game
 		static int setSize = 6;
 		static int cardCount = default;
 
-		/*public static void Main(string[] args)
-		{
-			do
-			{
-				Console.Write("Enter the size of your set> ");
-				cardCount = Convert.ToInt32(Console.ReadLine());
-
-				var set = FillSet(cardCount);
-				var cards = Cards(setSize, set);
-				//Console.WriteLine("Your set is : \n" + string.Join("\n", FillSet(setSize).Select(kvp => $"{kvp.Key}\t{kvp.Value}")));
-
-				foreach (var item in cards)
-				{
-					Console.WriteLine(item.ToString());
-				}
-
-			} while (cardCount != -1);
-		}*/
-
 		private Dictionary<int, float> FillSet(int size)
 		{
 			Dictionary<int, float> cardSet = new();

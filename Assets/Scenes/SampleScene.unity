@@ -2882,8 +2882,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e770a41a7b2f4d4486ba0acacdf5a2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardNums: 
-  cardWeights: 000000000000000000000000000000000000000000000000
+  cardWeights: 050000000800000004000000010000001100000019000000060000000300000005000000
+  numTexts:
+  - {fileID: 924957397}
+  - {fileID: 348757807}
+  - {fileID: 1150752531}
+  - {fileID: 1800013883}
+  - {fileID: 171294302}
+  - {fileID: 1228109369}
+  - {fileID: 1769484297}
+  - {fileID: 187832535}
+  - {fileID: 1006507658}
 --- !u!4 &1826099223
 Transform:
   m_ObjectHideFlags: 0

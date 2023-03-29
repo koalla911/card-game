@@ -1,19 +1,37 @@
 ﻿using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 namespace Game
 {
 	public class CardProvider : MonoBehaviour
 	{
-		[SerializeField] private List<int> cardNums = new();
+		private int cards = default;
 		[SerializeField] private List<int> cardWeights = new();
+		[SerializeField] private List<TextMeshProUGUI> numTexts = new();
+
+		private List<int> cardNums = new();
 		private Dictionary<int, float> probabilities = new();
 		private Card card = new();
 
 		private void Awake()
 		{
-			
+			cards = cardWeights.Count;
+
+			for (int i = 0; i < cards; i++)
+			{
+				cardNums.Add(i);
+			}
+
+			SetProbability();
+
+			foreach (int num in cardNums)
+			{
+				Debug.Log(num);
+
+				numTexts[num].SetText(TryGetCard().ToString());
+			}
 		}
 
 		private int SumWeights(List<int> weights)
@@ -30,28 +48,24 @@ namespace Game
 
 		private void SetProbability()
 		{
-			List<float> probs = new();
+			int sum = SumWeights(cardWeights);
 
-			foreach(int num in cardNums)
+			foreach (int num in cardNums)
 			{
-				probabilities.Add(num, cardWeights[num] / SumWeights(cardWeights));
+				float weight = (float)Math.Round((float)cardWeights[num] / sum, 2);
+				probabilities.Add(num, weight);
 			}
 		}
 
-		private List<int> TryGetCard()
+		private int TryGetCard()
 		{
-			List<int> resultSet = new();
+			System.Random randomNumber = new();
+			int cardNumber = randomNumber.Next(1, cardNums.Count);
+			float random = card.GetRandomProbability();
+			int resultNumber = probabilities[cardNumber] <= random ? cardNumber : TryGetCard();
+			Debug.Log(resultNumber);
 
-			foreach (int prob in probabilities.Keys)
-			{
-				float randomProb = card.GetRandomProbability();
-
-				if (probabilities[prob] <= randomProb)
-				{
-				}
-			}
-
-			return resultSet;
+			return resultNumber;
 		}
 	}
 }
