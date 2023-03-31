@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cf33eb1c241f4c45b7e78c73f0a245e, type: 3}
+  m_Name: CardConfig
+  m_EditorClassIdentifier: 
+  cards:
+  - id: Human card
+    cardImage: {fileID: 21300000, guid: 87d203c599da7244388fd26d6c885550, type: 3}
+    number: 1
+    weight: 5
+    description: spawn 3 fighters
+  - id: Magic card
+    cardImage: {fileID: 21300000, guid: f0989aaed860a144fbbf7c587c0bb5f7, type: 3}
+    number: 2
+    weight: 8
+    description: generates magic shield
+  - id: Building card
+    cardImage: {fileID: 21300000, guid: 87d203c599da7244388fd26d6c885550, type: 3}
+    number: 3
+    weight: 4
+    description: spawn 1 house
+  - id: Magic card
+    cardImage: {fileID: 21300000, guid: f0989aaed860a144fbbf7c587c0bb5f7, type: 3}
+    number: 4
+    weight: 1
+    description: creates fire storm
+  - id: Magic card
+    cardImage: {fileID: 21300000, guid: f0989aaed860a144fbbf7c587c0bb5f7, type: 3}
+    number: 5
+    weight: 17
+    description: creates magic flame
+  - id: Human card
+    cardImage: {fileID: 21300000, guid: 87d203c599da7244388fd26d6c885550, type: 3}
+    number: 6
+    weight: 10
+    description: spawn 13 miners
+  stations:
+    m_keys: 
+    m_values: []

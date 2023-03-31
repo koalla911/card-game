@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ScreenState : MonoBehaviour
+public abstract class ScreenState : MonoBehaviour
 {
 	private bool quitting;
 
@@ -11,6 +11,7 @@ public class ScreenState : MonoBehaviour
 
 	public virtual void Open()
 	{
+		Debug.Log(this.gameObject.name);
 		gameObject.SetActive(true);
 	}
 
@@ -21,9 +22,11 @@ public class ScreenState : MonoBehaviour
 			gameObject.SetActive(false);
 		}
 	}
+
+	protected abstract void OnClickBackButton();
 }
 
-public class ScreenState<T> : ScreenState where T : View
+public abstract class ScreenState<T> : ScreenState where T : View
 {
 	public T View { get; private set; }
 
