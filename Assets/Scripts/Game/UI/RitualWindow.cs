@@ -7,8 +7,7 @@ namespace Game.UI
 {
 	public class RitualWindow : ScreenState
 	{
-		[Inject] private static UiService uiService = default;
-		[Inject] protected static CardProvider cardProvider = default;
+		protected static CardProvider cardProvider = default;
 
 		[SerializeField] private Button closeBtn = default;
 		[SerializeField] private CardView cardView = default;

@@ -5,7 +5,6 @@ namespace Game
 {
 	public class MainState : GameState
 	{
-		[Inject] private static UiService uiService = default;
 		private MainHUDWindow window;
 
 		protected override void OnEnable()

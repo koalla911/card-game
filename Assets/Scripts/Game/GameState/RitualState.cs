@@ -5,7 +5,6 @@ namespace Game
 {
 	public class RitualState : GameState
 	{
-		[Inject] private static UiService uiService = default;
 		private RitualWindow window;
 
 		protected override void OnEnable()

@@ -5,9 +5,9 @@ using UnityEngine;
 
 namespace Game
 {
-	public class CardProvider : Service
+	public class CardProvider : MonoBehaviour //Service
 	{
-		[Inject] private DataService dataService = default;
+		private DataService dataService = default;
 		private int cards = default;
 		[SerializeField] private List<int> cardWeights = new();
 		[SerializeField] private List<TextMeshProUGUI> numTexts = new();
@@ -18,7 +18,7 @@ namespace Game
 
 		public CardConfig CardConfig => dataService.CardConfig;
 
-		public override void OnAwake()
+		public void Awake()
 		{
 			cards = cardWeights.Count;
 
