@@ -17,7 +17,6 @@ namespace Game.UI
 		private void Start()
 		{
 			//closeBtn.onClick.AddListener(OnClickCloseBtn);
-			Open();
 		}
 
 		public override void Open()

@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class UiService : Service
+public class UiService : MonoBehaviour
 {
 	private Dictionary<Type, ScreenState> screens = new();
 	private Stack<Type> screensStack = new();
 	private GameObject uiCanvas;
 
-	public override void OnAwake()
+	public void OnAwake()
 	{
 		CollectScreens(Consts.Scenes.Persistent); //May collect nothing because scene may still not be populated on awake
 	}
