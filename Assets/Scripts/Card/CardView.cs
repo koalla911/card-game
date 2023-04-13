@@ -10,7 +10,7 @@ namespace Game
 		[SerializeField] private TextMeshProUGUI description = default;
 		[SerializeField] private TextMeshProUGUI number = default;
 
-		public void Init(CardInfo card)
+		public void Init(CardData card)
 		{
 			background.sprite = card.CardImage;
 			description.SetText(card.Description);

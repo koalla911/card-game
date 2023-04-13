@@ -11,6 +11,15 @@ namespace Game
 		public UnityEvent OnClickSettingsButton => settingsButton.onClick;
 		public UnityEvent OnClickRitualButton => ritualsButton.onClick;
 
+		public override void Open()
+		{
+			base.Open();
+		}
+
+		public override void Close()
+		{
+			base.Close();
+		}
 
 		protected override void OnClickBackButton() { return; }
 	}

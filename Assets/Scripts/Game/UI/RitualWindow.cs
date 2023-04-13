@@ -28,12 +28,12 @@ namespace Game.UI
 				Destroy(child.gameObject);
 			}
 
-			var cards = cardProvider.CardConfig.Cards;
+			/*var cards = cardProvider.CardConfig.Cards;
 			foreach (var card in cards)
 			{
 				var preview = Instantiate(cardView, gridLayout.transform);
 				preview.Init(card);
-			}
+			}*/
 		}
 
 		public override void Close()

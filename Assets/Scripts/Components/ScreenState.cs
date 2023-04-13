@@ -11,7 +11,7 @@ public abstract class ScreenState : MonoBehaviour
 
 	public virtual void Open()
 	{
-		Debug.Log(this.gameObject.name);
+		Debug.Log("open : "+this.gameObject.name);
 		gameObject.SetActive(true);
 	}
 

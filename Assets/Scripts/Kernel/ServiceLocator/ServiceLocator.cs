@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using UnityEngine;
 
 public class ServiceLocator
 {
@@ -72,6 +73,7 @@ public class ServiceLocator
 	{
 		foreach (var service in instances.Values)
 		{
+			Debug.Log("is services");
 			(service as Service)?.OnAwake();
 		}
 	}

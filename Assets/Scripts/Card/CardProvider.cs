@@ -16,7 +16,7 @@ namespace Game
 		private Dictionary<int, float> probabilities = new();
 		private CardLegacy card = new();
 
-		public CardConfig CardConfig => dataService.CardConfig;
+		public CardPackConfigData CardConfig => dataService.CardConfigData;
 
 		public override void OnAwake()
 		{

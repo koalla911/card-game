@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using Cysharp.Threading.Tasks;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Game
 {
@@ -8,5 +10,6 @@ namespace Game
 		{
 			GameState.Init<MainState>();
 		}
+
 	}
 }

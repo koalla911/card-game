@@ -20,7 +20,7 @@ namespace Game
 
 		private void Start()
 		{
-			GameState.Init<RitualState>();
+			//GameState.Init<RitualState>();
 		}
 
 		public void RestartGameplay()

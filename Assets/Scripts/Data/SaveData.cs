@@ -7,8 +7,6 @@ public class SaveData
 	public string Version { get; set; } = string.Empty;
 	public int Coins { get; set; }
 	public SettingsSaveData Settings { get; set; } = new();
-	public QuestsSaveData Quests { get; set; } = new();
-	public TimebasedRewardSaveData TimebasedReward { get; set; } = new();
 	public TutorialsSaveData Tutorials { get; set; } = new();
 	public EnergySaveData Energy { get; set; } = new();
 	public UserPropertiesSaveData UserProperties { get; set; } = new();
@@ -19,23 +17,6 @@ public class SettingsSaveData
 {
 	public bool MuteSfx { get; set; }
 	public bool MuteMusic { get; set; }
-}
-
-public class QuestsSaveData
-{
-	public Dictionary<string, QuestStatusSaveData> StatusByUid { get; set; } = new();
-}
-
-public class QuestStatusSaveData
-{
-	public int Attempts { get; set; } = 0;
-	public int CompletedAttempts { get; set; } = 0;
-	//public QuestStatus Status { get; set; } = QuestStatus.Locked;
-}
-
-public class TimebasedRewardSaveData
-{
-	public DateTime NextRewardTime { get; set; } = new();
 }
 
 public class TutorialsSaveData

@@ -10,6 +10,7 @@ public struct Consts
 		public const string Entry = "Entry";
 		public const string Persistent = "Persistent";
 		public const string Lobby = "Lobby";
+		public const string Main = "Main";
 	}
 
 	public struct Layers

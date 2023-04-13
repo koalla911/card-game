@@ -1,25 +1,30 @@
 ﻿using Game.UI;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.UI;
 
 namespace Game
 {
 	public class RitualState : GameState
 	{
-		[Inject] private static UiService uiService = default;
-		private RitualWindow window;
+		[SerializeField] private Button exitButton = default;
+		public UnityEvent OnClickExitButton => exitButton.onClick;
 
 		protected override void OnEnable()
 		{
 			base.OnEnable();
-			Debug.Log("this is Ritual");
-			//window = uiService.Open<RitualWindow>();
+			OnClickExitButton.AddListener(OnQuit);
 		}
 
 		protected override void OnDisable()
 		{
-			//uiService.Close<RitualWindow>();
+			OnClickExitButton.RemoveListener(OnQuit);
 			base.OnDisable();
 		}
 
+		private void OnQuit()
+		{
+			GameState.Switch<MainState>();
+		}
 	}
 }

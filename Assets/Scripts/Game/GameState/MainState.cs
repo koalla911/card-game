@@ -1,28 +1,28 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.UI;
 
 namespace Game
 {
 	public class MainState : GameState
 	{
-		[Inject] private static UiService uiService = default;
-		private MainHUDWindow window;
+		[SerializeField] private Button settingsButton = default;
+		[SerializeField] private Button ritualsButton = default;
+		public UnityEvent OnClickSettingsButton => settingsButton.onClick;
+		public UnityEvent OnClickRitualButton => ritualsButton.onClick;
+		//private PoolMono<RacerViewOverview> racerPool;
+
 
 		protected override void OnEnable()
 		{
 			base.OnEnable();
-			Debug.Log("this is Main");
-
-			/*window = uiService.Open<MainHUDWindow>(dropStack: true);
-			window.OnClickSettingsButton.AddListener(OpenSettings);
-			window.OnClickRitualButton.AddListener(OpenRituals);*/
+			OnClickRitualButton.AddListener(OpenRituals);
 		}
 
 		protected override void OnDisable()
 		{
-			/*window.OnClickSettingsButton.RemoveListener(OpenSettings);
-			window.OnClickRitualButton.AddListener(OpenRituals);*/
-
+			OnClickRitualButton.RemoveListener(OpenRituals);
 			base.OnDisable();
 		}
 
