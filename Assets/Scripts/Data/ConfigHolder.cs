@@ -5,24 +5,17 @@ namespace Game
 	[CreateAssetMenu(fileName = nameof(ConfigHolder), menuName = "Data/"+nameof(ConfigHolder))]
 	public class ConfigHolder : ScriptableObject
 	{
-		public static ConfigHolder Instance = default;
+		[SerializeField] private PackConfigData packs = default;
+		public PackConfigData Packs => packs;
 
-		[SerializeField] private PackConfigData packConfigData = default;
-		public PackConfigData PackConfigData => packConfigData;
+		[SerializeField] private ResourcesConfigData resources = default;
+		public ResourcesConfigData Resources => resources;
+		
+		[SerializeField] private ResearchesConfigData researches = default;
+		public ResearchesConfigData Researches => researches;
+		
+		[SerializeField] private CardConfigData[] cards = default;
+		public CardConfigData[] Cards => cards;
 
-		[SerializeField] private ResourcesConfigData resourcesConfigData = default;
-		public ResourcesConfigData ResourcesConfigData => resourcesConfigData;
-
-		public void CreateInstance()
-		{
-			if (Instance == null)
-			{
-				Instance = this;
-			}
-			else
-			{
-				throw new UnityException("config instance already created");
-			}
-		}
 	}
 }

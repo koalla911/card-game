@@ -9,12 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0c191d60cb66bd4180310eb338bc57f, type: 3}
-  m_Name: 2
+  m_Script: {fileID: 11500000, guid: 656f4548ab4d5db48802f66c2c3671bb, type: 3}
+  m_Name: ResearchesConfigData
   m_EditorClassIdentifier: 
-  includedInPack: 
-  type: 0
-  cardImage: {fileID: 21300000, guid: f0989aaed860a144fbbf7c587c0bb5f7, type: 3}
-  number: 0
-  weight: 0
-  description: magic defending
+  minPackSize: 3
+  maxPackSize: 6

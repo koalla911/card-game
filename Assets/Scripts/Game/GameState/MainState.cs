@@ -11,7 +11,6 @@ namespace Game
 		[SerializeField] private Button ritualsButton = default;
 		[SerializeField] private ResourcesWidget resourcesWidget = default;
 		public UnityEvent OnClickRitualButton => ritualsButton.onClick;
-		//private PoolMono<RacerViewOverview> racerPool;
 
 		protected override void OnEnable()
 		{

@@ -9,13 +9,27 @@ namespace Game
 	{
 		[SerializeField] private Button exitButton = default;
 		[SerializeField] private ResourcesWidget resourcesWidget = default;
+		[SerializeField] private CardView cardPrefab = default;
+		[SerializeField] private LayoutGroup cardParent = default;
+
+		private ObjectPool<CardView> cardPool = default;
 
 		public UnityEvent OnClickExitButton => exitButton.onClick;
+
+		private void Awake()
+		{
+			var objectpool = new ObjectPool<Button>(exitButton, GameController.Instance.ConfigHolder.Researches.MinPackSize, cardParent.gameObject);
+
+			//cardPool = new ObjectPool<CardView>(cardPrefab, GameController.Instance.ConfigHolder.Researches.MinPackSize, cardParent.gameObject);
+
+		}
 
 		protected override void OnEnable()
 		{
 			base.OnEnable();
 			resourcesWidget.Init(GameController.Instance.ResourcesData);
+
+			GenerateCards();
 
 			OnClickExitButton.AddListener(OnQuit);
 		}
@@ -24,6 +38,15 @@ namespace Game
 		{
 			OnClickExitButton.RemoveListener(OnQuit);
 			base.OnDisable();
+		}
+
+		private void GenerateCards()
+		{
+			for (int i = 0; i < GameController.Instance.ConfigHolder.Researches.MinPackSize; i++)
+			{
+				CardView racerView = cardPool.GetFreeElement();
+				racerView.Init(GameController.Instance.ConfigHolder.Cards[i]);
+			}
 		}
 
 		private void OnQuit()

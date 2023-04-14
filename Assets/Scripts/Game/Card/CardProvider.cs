@@ -16,7 +16,7 @@ namespace Game
 		private Dictionary<int, float> probabilities = new();
 		private CardLegacy card = new();
 
-		public PackConfigData PackConfig => ConfigHolder.Instance.PackConfigData;
+		//public PackConfigData PackConfig => ConfigHolder.Instance.PackConfigData;
 
 		public void Init()
 		{
