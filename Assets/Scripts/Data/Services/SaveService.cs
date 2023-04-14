@@ -39,7 +39,7 @@ public class SaveService
 		// for now just drop all progress, keeping Settings and UserProperties
 		SaveData = new SaveData();
 		SaveData.Settings = old.Settings;
-		SaveData.UserProperties = old.UserProperties;
+		//SaveData.UserProperties = old.UserProperties;
 	}
 
 	public void Load()
