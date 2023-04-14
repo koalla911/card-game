@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using Zenject;
 
 public class SettingsDataProvider : Service
 {

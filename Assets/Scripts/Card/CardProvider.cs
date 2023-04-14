@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using Zenject;
 
 namespace Game
 {
@@ -16,7 +17,7 @@ namespace Game
 		private Dictionary<int, float> probabilities = new();
 		private CardLegacy card = new();
 
-		public CardPackConfigData CardConfig => dataService.CardConfigData;
+		public PackConfigData PackConfig => ConfigHolder.Instance.PackConfigData;
 
 		public override void OnAwake()
 		{

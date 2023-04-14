@@ -6,9 +6,9 @@ public class SaveData
 {
 	public string Version { get; set; } = string.Empty;
 	public int Coins { get; set; }
+	public int Resources { get; set; }
 	public SettingsSaveData Settings { get; set; } = new();
 	public TutorialsSaveData Tutorials { get; set; } = new();
-	public EnergySaveData Energy { get; set; } = new();
 	public UserPropertiesSaveData UserProperties { get; set; } = new();
 	public ProfileSaveData Profile { get; set; } = new();
 }
@@ -43,5 +43,4 @@ public class UserPropertiesSaveData
 
 public class ProfileSaveData
 {
-	public int Experience { get; set; }
 }
