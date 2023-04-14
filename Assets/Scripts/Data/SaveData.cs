@@ -8,8 +8,6 @@ public class SaveData
 	public int Coins { get; set; }
 	public int Resources { get; set; }
 	public SettingsSaveData Settings { get; set; } = new();
-	public TutorialsSaveData Tutorials { get; set; } = new();
-	public UserPropertiesSaveData UserProperties { get; set; } = new();
 	public ProfileSaveData Profile { get; set; } = new();
 }
 

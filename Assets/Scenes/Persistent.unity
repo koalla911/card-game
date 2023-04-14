@@ -261,7 +261,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &283765509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -832,6 +832,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   exitButton: {fileID: 176430220}
+  resourcesWidget: {fileID: 0}
 --- !u!1 &1256998858
 GameObject:
   m_ObjectHideFlags: 0
@@ -963,27 +964,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1332041766}
-  - component: {fileID: 1332041765}
+  - component: {fileID: 1332041767}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &1332041765
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1332041764}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ca7e0a62647fd94197c25879839e3ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isInited: 0
+  m_IsActive: 1
 --- !u!4 &1332041766
 Transform:
   m_ObjectHideFlags: 0
@@ -999,6 +987,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1332041767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1332041764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5ef5b5b4f7353b4e9121e8a3c804153, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resources: {fileID: 11400000, guid: feba846b5f53c5943bfdbd40811149ea, type: 2}
 --- !u!1 &1478069053
 GameObject:
   m_ObjectHideFlags: 0
@@ -1321,8 +1322,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c5b69833cbb21646ae7b02b596acae2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  settingsButton: {fileID: 1979946916}
   ritualsButton: {fileID: 1979946916}
+  resourcesWidget: {fileID: 5023466983837735813}
 --- !u!1 &1979946914
 GameObject:
   m_ObjectHideFlags: 0
@@ -1769,3 +1770,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8432726794297694443, guid: 28177fc3f9d01654dae6a93a45ce3ff4, type: 3}
   m_PrefabInstance: {fileID: 5023466983837735811}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5023466983837735813 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3480727977902864935, guid: 28177fc3f9d01654dae6a93a45ce3ff4, type: 3}
+  m_PrefabInstance: {fileID: 5023466983837735811}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 440dae5fba55cb94883665f68ca91d1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

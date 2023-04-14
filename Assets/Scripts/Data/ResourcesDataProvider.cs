@@ -1,18 +1,25 @@
 ﻿using System;
 using UnityEngine;
-using Zenject;
+//using Zenject;
 
 namespace Game
 {
-	public class ResourcesDataProvider : Service
+	public class ResourcesDataProvider
 	{
-		[Inject] private static SaveService saveService = default;
-		[Inject] private static DataService dataService = default;
+		private SaveService saveService = default;
+		private ResourcesConfigData resourcesConfig = default;
+
+		public ResourcesDataProvider(SaveService saveService, ResourcesConfigData resourcesConfig)
+		{
+			this.saveService = saveService;
+			this.resourcesConfig = resourcesConfig;
+		}
 
 		public event Action<int> OnResourcesChanged;
 
-		public ResourcesConfigData ResourcesConfig => ConfigHolder.Instance.ResourcesConfigData;
+		//public ResourcesConfigData ResourcesConfig => ConfigHolder.Instance.ResourcesConfigData;
 		private SaveData saveData => saveService.SaveData;
+
 		public int Resources
 		{
 			get => saveData.Resources;
@@ -24,12 +31,6 @@ namespace Game
 			}
 		}
 
-		public override void OnAwake()
-		{
-			Debug.Log("Resources provider Awake");
-			SetStartResources();
-		}
-
 		public void SetResourcesAmount(int difference)
 		{
 			Resources += difference;
@@ -37,7 +38,7 @@ namespace Game
 
 		public void SetStartResources()
 		{
-			Resources = (Resources - Resources) + ResourcesConfig.ResourcesStartValue;
+			Resources = resourcesConfig.ResourcesStartValue;
 		}
 
 		public bool TryBuyRitual(int price)

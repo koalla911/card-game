@@ -3,14 +3,14 @@ using UnityEngine;
 using Newtonsoft.Json;
 using System;
 
-public class SaveService: Service
+public class SaveService
 {
 	public SaveData SaveData { get; private set; }
 	public bool SaveExists => File.Exists(saveFilePath);
 	public bool IsFirstSession { get; private set; }
 	private string saveFilePath = Path.Combine(Application.persistentDataPath, "save.json");
 
-	public override void OnCreate()
+	public void OnCreate()
 	{
 		if (SaveExists)
 		{

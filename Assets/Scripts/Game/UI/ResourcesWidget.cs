@@ -1,30 +1,34 @@
 ﻿using System;
 using TMPro;
 using UnityEngine;
-using Zenject;
+//using Zenject;
 
 namespace Game.UI
 {
 	public class ResourcesWidget : MonoBehaviour
 	{
-		[Inject] private static ResourcesDataProvider resourcesDataProvider = default;
-
 		[SerializeField] private TextMeshProUGUI resourcesLabel = default;
 
-		private void OnEnable()
+		private ResourcesDataProvider resourcesDataProvider;
+
+		public void Init(ResourcesDataProvider resourcesDataProvider)
 		{
-			resourcesDataProvider.OnResourcesChanged += OnResourcesChanged;
-			OnResourcesChanged(resourcesDataProvider.Resources);
+			this.resourcesDataProvider = resourcesDataProvider;
+			this.resourcesDataProvider.OnResourcesChanged += OnResourcesChanged;
+			OnResourcesChanged(this.resourcesDataProvider.Resources);
 		}
 		
 		private void OnDisable()
 		{
-			resourcesDataProvider.OnResourcesChanged -= OnResourcesChanged;
+			if (resourcesDataProvider != null)
+			{
+				resourcesDataProvider.OnResourcesChanged -= OnResourcesChanged;
+			}
 		}
 
 		private void OnResourcesChanged(int obj)
 		{
-			resourcesLabel.SetText("Resources: "+obj.ToString());
+			resourcesLabel.SetText("Resources: " + obj.ToString());
 		}
 	}
 }

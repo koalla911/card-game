@@ -12,5 +12,17 @@ namespace Game
 
 		[SerializeField] private ResourcesConfigData resourcesConfigData = default;
 		public ResourcesConfigData ResourcesConfigData => resourcesConfigData;
+
+		public void CreateInstance()
+		{
+			if (Instance == null)
+			{
+				Instance = this;
+			}
+			else
+			{
+				throw new UnityException("config instance already created");
+			}
+		}
 	}
 }

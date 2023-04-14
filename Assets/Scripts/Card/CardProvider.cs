@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using Zenject;
+//using Zenject;
 
 namespace Game
 {
-	public class CardProvider : Service
+	public class CardProvider
 	{
-		[Inject] private DataService dataService = default;
 		private int cards = default;
 		[SerializeField] private List<int> cardWeights = new();
 		[SerializeField] private List<TextMeshProUGUI> numTexts = new();
@@ -19,7 +18,7 @@ namespace Game
 
 		public PackConfigData PackConfig => ConfigHolder.Instance.PackConfigData;
 
-		public override void OnAwake()
+		public void Init()
 		{
 			cards = cardWeights.Count;
 
