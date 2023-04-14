@@ -18,7 +18,6 @@ namespace Game
 
 		private void Awake()
 		{
-			var objectpool = new ObjectPool<Button>(exitButton, GameController.Instance.ConfigHolder.Researches.MinPackSize, cardParent.gameObject);
 
 			//cardPool = new ObjectPool<CardView>(cardPrefab, GameController.Instance.ConfigHolder.Researches.MinPackSize, cardParent.gameObject);
 
@@ -29,7 +28,7 @@ namespace Game
 			base.OnEnable();
 			resourcesWidget.Init(GameController.Instance.ResourcesData);
 
-			GenerateCards();
+			//GenerateCards();
 
 			OnClickExitButton.AddListener(OnQuit);
 		}
@@ -44,8 +43,8 @@ namespace Game
 		{
 			for (int i = 0; i < GameController.Instance.ConfigHolder.Researches.MinPackSize; i++)
 			{
-				CardView racerView = cardPool.GetFreeElement();
-				racerView.Init(GameController.Instance.ConfigHolder.Cards[i]);
+				CardView cardView = cardPool.GetFreeElement();
+				cardView.Init(GameController.Instance.ConfigHolder.Cards[i]);
 			}
 		}
 
