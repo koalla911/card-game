@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: PackConfigData
   m_EditorClassIdentifier: 
   packs:
-  - <PackName>k__BackingField: A
+  - <PackNameSetter>k__BackingField: A
     <PackPrice>k__BackingField: 100
-  - <PackName>k__BackingField: B
+  - <PackNameSetter>k__BackingField: B
     <PackPrice>k__BackingField: 200
-  - <PackName>k__BackingField: C
+  - <PackNameSetter>k__BackingField: C
     <PackPrice>k__BackingField: 300
-  - <PackName>k__BackingField: D
+  - <PackNameSetter>k__BackingField: D
     <PackPrice>k__BackingField: 400

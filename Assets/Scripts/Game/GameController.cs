@@ -8,7 +8,7 @@ namespace Game
 	{
 		[SerializeField] private SimpleLevelGenerator levelGenerator = default;
 
-		public ResourcesDataProvider ResourcesData { get; set; }
+		public ResourcesDataProvider ResourcesProvider { get; set; }
 		public SaveService SaveService{ get; set; }
 		public Level Level { get; private set; }
 
@@ -33,8 +33,8 @@ namespace Game
 			SaveService = new SaveService();
 			SaveService.OnCreate();
 
-			ResourcesData = new ResourcesDataProvider(SaveService, resourcesConfig);
-			ResourcesData.SetStartResources();
+			ResourcesProvider = new ResourcesDataProvider(SaveService, resourcesConfig);
+			ResourcesProvider.SetStartResources();
 
 			GameState.Init<MainState>();
 
@@ -46,21 +46,21 @@ namespace Game
 			Level = levelGenerator.Generate();//generate Race
 		}
 
-		public ObjectPool<PackButtonView> packBtnPool = default;
+		public PoolMono<PackButtonView> packBtnPool = default;
 		[SerializeField] private PackButtonView packBtnPrefab = default;
 		[SerializeField] private LayoutGroup packsBtnParent = default;
 
-		public ObjectPool<CardView> cardPool = default;
+		public PoolMono<CardView> cardPool = default;
 		[SerializeField] private CardView cardPrefab = default;
 		[SerializeField] private LayoutGroup cardParent = default;
 
 		public void GeneratePools()
 		{
 			ClearLayout(packsBtnParent);
-			packBtnPool = new ObjectPool<PackButtonView>(packBtnPrefab, PackConfig.Packs.Count, packsBtnParent.gameObject);
+			packBtnPool = new PoolMono<PackButtonView>(packBtnPrefab, PackConfig.Packs.Count, packsBtnParent.gameObject.transform, false);
 
 			ClearLayout(cardParent);
-			cardPool = new ObjectPool<CardView>(cardPrefab, ResearchesConfig.PackSlots, cardParent.gameObject);
+			cardPool = new PoolMono<CardView>(cardPrefab, ResearchesConfig.PackSlots, cardParent.gameObject.transform, false);
 		}
 
 		//TODO: ObjectPool needs to be able to enable existed objects and remove extra

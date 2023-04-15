@@ -1,71 +1,76 @@
-using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectPool<T> where T : MonoBehaviour
+namespace Fancy
 {
-	public T Prefab { get; }
-	public bool AutoExpand = true;
-	public GameObject PrefabParent { get; }
-
-	private List<T> pool;
-	public List<T> Pool { get { return pool; } }
-
-	public ObjectPool(T prefab, int count, GameObject prefabParent)
-	{
-		(Prefab, PrefabParent) = (prefab, prefabParent);
-
-		CreatePool(count);
-	}
-
-	private void CreatePool(int count)
-	{
-		pool = new List<T>();
-
-		for (int i = 0; i < count; i++)
+	public class ObjectPool : MonoBehaviour {
+		public class PooledObject : MonoBehaviour
 		{
-			CreateObject();
-		}
-	}
-
-	private T CreateObject(bool isActiveByDefault = false)
-	{
-		T createdObject = GameObject.Instantiate(Prefab, PrefabParent.transform);
-		createdObject.gameObject.SetActive(isActiveByDefault);
-		pool.Add(createdObject);
-
-		return createdObject;
-	}
-
-	public bool HasFreeElement(out T element)
-	{
-		foreach (var item in pool)
-		{
-			if (!item.gameObject.activeInHierarchy)
+			public ObjectPool pool;
+			public void ReturnToPool()
 			{
-				element = item;
-				item.gameObject.SetActive(true);
-				return true;
+				if(pool)
+				{
+					gameObject.SetActive(false);
+					transform.SetParent(pool.transform);
+				} else {
+					GameObject.Destroy(gameObject);
+				}
 			}
 		}
 
-		element = null;
-		return false;
-	}
+		public GameObject sample;
+		public List<GameObject> pool;
 
-	public T GetFreeElement()
-	{
-		if (HasFreeElement(out T element))
+		private void OnEnable()
 		{
-			return element;
+			if(pool == null) pool = new List<GameObject>();
+			for(int i = 0; i < pool.Count; i++)
+			{
+				pool[i].GetOrAddComponent<PooledObject>().pool = this;
+			}
 		}
 
-		if (AutoExpand)
+		public GameObject Get()
 		{
-			return CreateObject(true);
+			GameObject go;
+			for(int i = 0; i < pool.Count; i++)
+			{
+				go = pool[i];
+				if(! go.activeSelf) return go;
+			}
+			return InstantiateSample();
 		}
 
-		throw new Exception($"there is no free elements in pool of type {typeof(T)}");
+		public GameObject InstantiateSample(int count = 1)
+		{
+			GameObject go = null;
+			for (int i = 0; i < count; i++)
+			{
+				go = GameObject.Instantiate(sample);
+				pool.Add(go);
+				go.GetOrAddComponent<PooledObject>().pool = this;
+				go.transform.SetParent(transform);
+				go.SetActive(false);
+			}
+			return go;
+		}
+
+		public void Resize(int newSize)
+		{
+			if(newSize < 0) newSize = 0;
+			if(newSize > pool.Count)
+			{
+				InstantiateSample(newSize - pool.Count);
+			} else
+			{
+				for(int i = newSize; i < pool.Count; i++)
+				{
+					GameObject.Destroy(pool[i]);
+				}
+				pool.RemoveRange(newSize, pool.Count - newSize);
+			}
+		}
 	}
 }
-

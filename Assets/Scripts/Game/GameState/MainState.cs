@@ -9,16 +9,15 @@ namespace Game
 	public class MainState : GameState
 	{
 		[SerializeField] private Button ritualsButton = default;
-		[SerializeField] private ResourcesView resourcesWidget = default;
-		[SerializeField] private LayoutGroup packsBtnParent = default;
+		[SerializeField] private ResourcesWidget resourcesWidget = default;
 
 		public UnityEvent OnClickRitualButton => ritualsButton.onClick;
-		private ObjectPool<PackButtonView> packPool = default;
+		private PoolMono<PackButtonView> packPool = default;
 
 		protected override void OnEnable()
 		{
 			base.OnEnable();
-			resourcesWidget.Init(GameController.Instance.ResourcesData);
+			//resourcesWidget.Init(GameController.Instance.ResourcesData);
 
 			packPool = GameController.Instance.packBtnPool;
 			GeneratePackButtons();
@@ -28,6 +27,7 @@ namespace Game
 		protected override void OnDisable()
 		{
 			OnClickRitualButton.RemoveListener(OpenRituals);
+			DisablePool();
 			base.OnDisable();
 		}
 
@@ -36,26 +36,22 @@ namespace Game
 			Level level = GameController.Instance.Level;
 			for (int i = 0; i < level.packs.Count; i++)
 			{
-				PackButtonView packView = packPool.GetFreeElement();
+				PackButtonView packView = packPool.GetActive();
 				packView.Init(level.packs[i]);
 			}
 		}
 
 		private void OpenRituals()
 		{
-			ClearLayout(packsBtnParent);
 			Switch<RitualState>();
 		}
 
 		//TODO: ObjectPool needs to be able to enable existed objects and remove extra
-		private void ClearLayout(LayoutGroup layout)
+		private void DisablePool()
 		{
-			if (layout.transform.childCount > 0)
+			foreach (var item in packPool.Pool)
 			{
-				for (int i = 0; i < layout.transform.childCount; i++)
-				{
-					Destroy(layout.transform.GetChild(i).gameObject);
-				}
+				item.gameObject.SetActive(false);
 			}
 		}
 	}

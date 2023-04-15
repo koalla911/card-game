@@ -29,5 +29,12 @@ public class CardConfigData : ScriptableObject
 	{
 		number = value;
 	}
+	
+	private float p = default;
+	[HideInInspector] public float P => p;
+	public void SetP(float value)
+	{
+		p = value;
+	}
 }
 

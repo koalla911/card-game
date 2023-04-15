@@ -7,7 +7,6 @@ namespace Game
 	{
 		public List<CardConfigData> cards = new();
 		public List<Pack> packs = new();
-		public ResearchesConfigData researches = new();
 
 		public int SumCardWeights()
 		{
@@ -23,8 +22,9 @@ namespace Game
 
 		public float k;
 		public float p;
-		public float P(int weight, int allWeights)
+		public float P(int weight)
 		{
+			int allWeights = SumCardWeights();
 			return (float)Math.Round((float)weight / allWeights, 2);
 		}
 

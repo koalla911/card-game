@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 656f4548ab4d5db48802f66c2c3671bb, type: 3}
   m_Name: ResearchesConfigData
   m_EditorClassIdentifier: 
-  packSlots: 3
+  packSlots: 6
   packCapacity: 6

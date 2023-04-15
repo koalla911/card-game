@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Game
@@ -12,7 +13,10 @@ namespace Game
 			level.packs = GeneratePacks();
 			level.cards = GenerateCards();
 
-			level.researches = GameController.Instance.ResearchesConfig;
+			for (int i = 0; i < GameController.Instance.ResearchesConfig.PackCapacity; i++)
+			{
+				level.cards[i].SetP(level.P(level.cards[i].Weight));
+			}
 
 			return level;
 		}
@@ -33,14 +37,9 @@ namespace Game
 			for (int i = 0; i < GameController.Instance.ResearchesConfig.PackCapacity; i++)
 			{
 				cards.Add(GameController.Instance.CardsConfig[i]);
-				cards[i].SetNumber(i);
+				cards[i].SetNumber(i+1);
 			}
 			return cards;
-		}
-
-		private void TryGetCard(Card card, int capacity)
-		{
-
 		}
 	}
 }

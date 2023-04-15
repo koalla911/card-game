@@ -786,6 +786,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ResourcesWidget
       objectReference: {fileID: 0}
+    - target: {fileID: 3480727977902864935, guid: 28177fc3f9d01654dae6a93a45ce3ff4, type: 3}
+      propertyPath: resourcesConfig
+      value: 
+      objectReference: {fileID: 11400000, guid: feba846b5f53c5943bfdbd40811149ea, type: 2}
     - target: {fileID: 8432726794297694443, guid: 28177fc3f9d01654dae6a93a45ce3ff4, type: 3}
       propertyPath: m_Pivot.x
       value: 1
@@ -1263,7 +1267,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   exitButton: {fileID: 176430220}
   resourcesWidget: {fileID: 487097134}
-  cardParent: {fileID: 84599769}
 --- !u!224 &531733500 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4041626621515724, guid: cf3ddb310db77604cae7b0ad6f209c89, type: 3}
@@ -2343,6 +2346,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 960b64d31cd0c124ba1d9a84577ebb2c, type: 2}
   - {fileID: 11400000, guid: bf455fd088c2c0046af6a9b56b5d89a2, type: 2}
   - {fileID: 11400000, guid: 050ebe009e589034e9c3a66b4c233d73, type: 2}
+  - {fileID: 11400000, guid: 2b1281b954177c341ab6ca1c2a1ed0c4, type: 2}
+  - {fileID: 11400000, guid: 67d8c57e36f3ec44789d13d6e42e8c93, type: 2}
+  - {fileID: 11400000, guid: 0126d681fe9891b40955210d14993ade, type: 2}
+  - {fileID: 11400000, guid: 0b5ad7f9308caed4288d107e43fad141, type: 2}
   packBtnPrefab: {fileID: 5961993933855857092, guid: cf3ddb310db77604cae7b0ad6f209c89, type: 3}
   packsBtnParent: {fileID: 898939298}
   cardPrefab: {fileID: 1822862821369218889, guid: ade2916806cbb7448992924ee49377f0, type: 3}
@@ -2871,7 +2878,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ritualsButton: {fileID: 1979946916}
   resourcesWidget: {fileID: 5023466983837735813}
-  packsBtnParent: {fileID: 898939298}
 --- !u!1001 &1642769233
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3329,6 +3335,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ResourcesWidget
       objectReference: {fileID: 0}
+    - target: {fileID: 3480727977902864935, guid: 28177fc3f9d01654dae6a93a45ce3ff4, type: 3}
+      propertyPath: resourcesConfig
+      value: 
+      objectReference: {fileID: 11400000, guid: feba846b5f53c5943bfdbd40811149ea, type: 2}
     - target: {fileID: 8432726794297694443, guid: 28177fc3f9d01654dae6a93a45ce3ff4, type: 3}
       propertyPath: m_Pivot.x
       value: 1

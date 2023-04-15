@@ -9,16 +9,15 @@ namespace Game
 	public class RitualState : GameState
 	{
 		[SerializeField] private Button exitButton = default;
-		[SerializeField] private ResourcesView resourcesWidget = default;
-		[SerializeField] private LayoutGroup cardParent = default;
+		[SerializeField] private ResourcesWidget resourcesWidget = default;
 
-		private ObjectPool<CardView> cardPool = default;
+		private PoolMono<CardView> cardPool = default;
 		public UnityEvent OnClickExitButton => exitButton.onClick;
 
 		protected override void OnEnable()
 		{
 			base.OnEnable();
-			resourcesWidget.Init(GameController.Instance.ResourcesData);
+			//resourcesWidget.Init(GameController.Instance.ResourcesData);
 
 			cardPool = GameController.Instance.cardPool;
 			GenerateCards();
@@ -36,16 +35,40 @@ namespace Game
 		{
 			Level level = GameController.Instance.Level;
 
-			for (int i = 0; i < GameController.Instance.ResearchesConfig.PackSlots; i++)
+			if (level != null)
 			{
-				CardView cardView = cardPool.GetFreeElement();
+				int j = 0;
+				while (j < GameController.Instance.ResearchesConfig.PackSlots)
+				{
+					System.Random randomNumber = new();
+					int rn = randomNumber.Next(0, level.cards.Count);
+					float k = K();
 
-				Debug.Log(level.cards[i].Weight);
-				cardView.Init(level.cards[i]);
+					if (level.cards[rn].P >= k)
+					{
+						CardView cardView = cardPool.GetActive();
+
+						cardView.Init(level.cards[rn]);
+
+						/*Debug.Log("Number: " + level.cards[rn].Number + " "
+							+ "Weight: " + level.cards[rn].Weight + " "
+							+ "P: " + level.cards[rn].P.ToString("F2") + " "
+							+ "K: " + k.ToString("F2"));*/
+
+						j++;
+					}
+					/*else
+					{
+						Debug.Log("unsuitable Number: " + level.cards[rn].Number + " "
+							+ "Weight: " + level.cards[rn].Weight + " "
+							+ "P: " + level.cards[rn].P.ToString("F2") + " "
+							+ "K: " + k.ToString("F2"));
+					}*/
+				}
 			}
 		}
 
-		private float GenerateProbability()
+		private float K()
 		{
 			System.Random random = new();
 			var k = (float)random.NextDouble();
@@ -55,19 +78,16 @@ namespace Game
 
 		private void OnQuit()
 		{
-			ClearLayout(cardParent);
+			DisablePool();
 			GameState.Switch<MainState>();
 		}
 
 		//TODO: ObjectPool needs to be able to enable existed objects and remove extra
-		private void ClearLayout(LayoutGroup layout)
+		private void DisablePool()
 		{
-			if (layout.transform.childCount > 0)
+			foreach (var item in cardPool.Pool)
 			{
-				for (int i = 0; i < layout.transform.childCount; i++)
-				{
-					Destroy(layout.transform.GetChild(i).gameObject);
-				}
+				item.gameObject.SetActive(false);
 			}
 		}
 	}
