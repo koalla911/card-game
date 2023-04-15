@@ -5,17 +5,17 @@ namespace Game
 	[CreateAssetMenu(fileName = nameof(ConfigHolder), menuName = "Data/"+nameof(ConfigHolder))]
 	public class ConfigHolder : ScriptableObject
 	{
-		[SerializeField] private PackConfigData packs = default;
-		public PackConfigData Packs => packs;
+		[SerializeField] private PackConfigData packConfig = default;
+		public PackConfigData PackConfig => packConfig;
 
-		[SerializeField] private ResourcesConfigData resources = default;
-		public ResourcesConfigData Resources => resources;
+		[SerializeField] private ResourcesConfigData resourcesConfig = default;
+		public ResourcesConfigData ResourcesConfig => resourcesConfig;
 		
-		[SerializeField] private ResearchesConfigData researches = default;
-		public ResearchesConfigData Researches => researches;
+		[SerializeField] private ResearchesConfigData researchesConfig = default;
+		public ResearchesConfigData ResearchesConfig => researchesConfig;
 		
-		[SerializeField] private CardConfigData[] cards = default;
-		public CardConfigData[] Cards => cards;
+		[SerializeField] private CardConfigData[] cardsConfig = default;
+		public CardConfigData[] CardsConfig => cardsConfig;
 
 	}
 }

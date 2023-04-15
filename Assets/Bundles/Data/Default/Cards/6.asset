@@ -9,8 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 656f4548ab4d5db48802f66c2c3671bb, type: 3}
-  m_Name: ResearchesConfigData
+  m_Script: {fileID: 11500000, guid: c0c191d60cb66bd4180310eb338bc57f, type: 3}
+  m_Name: 6
   m_EditorClassIdentifier: 
-  packSlots: 3
-  packCapacity: 6
+  includedInPack: 
+  type: 
+  cardImage: {fileID: 21300000, guid: 87d203c599da7244388fd26d6c885550, type: 3}
+  weight: 10
+  description: bla bla bla

@@ -71,22 +71,5 @@ namespace Game
 			return resultNumber;
 		}
 
-		public struct AnimalGradeData
-		{
-			public int Grade;
-			public bool IsMaxGrade;
-			public int CurrentProgress;
-			public int NextGradeProgress;
-			public int NextGradeCoinsReward;
-			public int AvailableCoinsReward;
-		}
-
-		public struct BiomeGradeData
-		{
-			public int CurrentProgress;
-			public int NextGradeProgress;
-			public int NextGradeCoinsReward;
-			public int AvailableCoinsReward;
-		}
 	}
 }

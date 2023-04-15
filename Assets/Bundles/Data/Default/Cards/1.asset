@@ -15,6 +15,5 @@ MonoBehaviour:
   includedInPack: 
   type: 0
   cardImage: {fileID: 21300000, guid: 87d203c599da7244388fd26d6c885550, type: 3}
-  number: 0
-  weight: 0
+  weight: 5
   description: extra building

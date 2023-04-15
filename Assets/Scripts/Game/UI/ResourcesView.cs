@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Game.UI
 {
-	public class ResourcesWidget : MonoBehaviour
+	public class ResourcesView : MonoBehaviour
 	{
 		[SerializeField] private TextMeshProUGUI resourcesLabel = default;
 

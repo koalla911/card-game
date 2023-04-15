@@ -16,13 +16,18 @@ public class CardConfigData : ScriptableObject
 	public Sprite CardImage => cardImage;
 
 	[field: Header("Params")]
-	[SerializeField] private int number = default;
-	public int Number => number;
 
 	[SerializeField] private int weight = default;
 	public int Weight => weight;
 
 	[SerializeField] private string description = default;
 	public string Description => description;
+
+	private int number = default;
+	[HideInInspector] public int Number => number;
+	public void SetNumber(int value)
+	{
+		number = value;
+	}
 }
 

@@ -12,6 +12,7 @@ namespace Game
 
 		public void Init(CardConfigData card)
 		{
+			number.SetText(card.Number.ToString());
 			background.sprite = card.CardImage;
 			description.SetText(card.Description);
 		}

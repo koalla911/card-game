@@ -9,23 +9,19 @@ namespace Game
 	public class MainState : GameState
 	{
 		[SerializeField] private Button ritualsButton = default;
-		[SerializeField] private RitualView ritualPrefab = default;
-		[SerializeField] private ResourcesWidget resourcesWidget = default;
+		[SerializeField] private ResourcesView resourcesWidget = default;
+		[SerializeField] private LayoutGroup packsBtnParent = default;
+
 		public UnityEvent OnClickRitualButton => ritualsButton.onClick;
-
-		private ObjectPool<RitualView> ritualPool = default;
-
-		private void Awake()
-		{
-			//ritualPool = new ObjectPool<CardView>(ritualPrefab, , cardParent.gameObject);
-
-		}
+		private ObjectPool<PackButtonView> packPool = default;
 
 		protected override void OnEnable()
 		{
 			base.OnEnable();
 			resourcesWidget.Init(GameController.Instance.ResourcesData);
 
+			packPool = GameController.Instance.packBtnPool;
+			GeneratePackButtons();
 			OnClickRitualButton.AddListener(OpenRituals);
 		}
 
@@ -35,18 +31,32 @@ namespace Game
 			base.OnDisable();
 		}
 
-		private void GenerateRitualButtons()
+		private void GeneratePackButtons()
 		{
-			/*for (int i = 0; i < GameController.Instance.ConfigHolder.Researches.MinPackSize; i++)
+			Level level = GameController.Instance.Level;
+			for (int i = 0; i < level.packs.Count; i++)
 			{
-				CardView cardView = ritualPool.GetFreeElement();
-				cardView.Init(GameController.Instance.ConfigHolder.Cards[i]);
-			}*/
+				PackButtonView packView = packPool.GetFreeElement();
+				packView.Init(level.packs[i]);
+			}
 		}
 
 		private void OpenRituals()
 		{
+			ClearLayout(packsBtnParent);
 			Switch<RitualState>();
+		}
+
+		//TODO: ObjectPool needs to be able to enable existed objects and remove extra
+		private void ClearLayout(LayoutGroup layout)
+		{
+			if (layout.transform.childCount > 0)
+			{
+				for (int i = 0; i < layout.transform.childCount; i++)
+				{
+					Destroy(layout.transform.GetChild(i).gameObject);
+				}
+			}
 		}
 	}
 }

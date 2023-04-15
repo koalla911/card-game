@@ -6,9 +6,9 @@ using UnityEngine;
 public class ResearchesConfigData : ScriptableObject
 {
 	[field: Header("Packs")]
-	[SerializeField] private int minPackSize = default;
-	public int MinPackSize => minPackSize;
-	
-	[SerializeField] private int maxPackSize = default;
-	public int MaxPackSize => maxPackSize;
+	[SerializeField] private int packSlots = default;
+	public int PackSlots => packSlots;
+
+	[SerializeField] private int packCapacity = default;
+	public int PackCapacity => packCapacity;
 }
