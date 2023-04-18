@@ -1,4 +1,6 @@
 ﻿using Game.UI;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -22,8 +24,11 @@ namespace Game
 		[SerializeField] private ResearchesConfigData researchesConfig = default;
 		public ResearchesConfigData ResearchesConfig => researchesConfig;
 
-		[SerializeField] private CardConfigData[] cardsConfig = default;
-		public CardConfigData[] CardsConfig => cardsConfig;
+		[Header("Cards: Needs to be initialize something else")]
+		[SerializeField] private List<CardConfigData> cards = default;
+		public IReadOnlyList<CardConfigData> Cards => cards;
+
+		public PackTypeInfo currentPack = default;
 
 		protected override void Awake()
 		{
@@ -43,7 +48,7 @@ namespace Game
 		//TODO: Simple Card Generator
 		public void GenerateLevel()
 		{
-			Level = levelGenerator.Generate();//generate Race
+			Level = levelGenerator.Generate();//generate Level
 		}
 
 		public PoolMono<PackButtonView> packBtnPool = default;

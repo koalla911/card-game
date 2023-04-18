@@ -34,6 +34,11 @@ namespace Game
 		private void GenerateCards()
 		{
 			Level level = GameController.Instance.Level;
+			if (GameController.Instance.currentPack != null)
+			{
+				var allCards = level.GetCardInfoByType(GameController.Instance.currentPack.CardType);
+				Debug.Log(allCards);
+			}
 
 			if (level != null)
 			{

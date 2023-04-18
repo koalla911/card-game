@@ -2339,7 +2339,7 @@ MonoBehaviour:
   packConfig: {fileID: 11400000, guid: f4d91cd20c44c454d8ee91b7199f047d, type: 2}
   resourcesConfig: {fileID: 11400000, guid: feba846b5f53c5943bfdbd40811149ea, type: 2}
   researchesConfig: {fileID: 11400000, guid: a7231b7271d6d7f468fae02ec116c53a, type: 2}
-  cardsConfig:
+  cards:
   - {fileID: 11400000, guid: cfcf6bac1f4df814fb28bfae27a482cd, type: 2}
   - {fileID: 11400000, guid: 928901c27b333e748b7a09a61018c8bc, type: 2}
   - {fileID: 11400000, guid: 69c899a5ccea41c4f860305701700b72, type: 2}

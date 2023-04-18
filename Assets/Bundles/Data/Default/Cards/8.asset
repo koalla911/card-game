@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0c191d60cb66bd4180310eb338bc57f, type: 3}
   m_Name: 8
   m_EditorClassIdentifier: 
-  includedInPack: 
+  includedInPack: car
   type: 
-  cardImage: {fileID: 21300000, guid: f0989aaed860a144fbbf7c587c0bb5f7, type: 3}
+  cardIcon: {fileID: 21300000, guid: 49c9d75a86044f047ba8e28b73c0444a, type: 3}
   weight: 15
   description: 

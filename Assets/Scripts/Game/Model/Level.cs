@@ -6,7 +6,14 @@ namespace Game
 	public class Level
 	{
 		public List<CardConfigData> cards = new();
-		public List<Pack> packs = new();
+		public List<PackTypeInfo> packs = new();
+		//public Dictionary<string, List<CardConfigData>> cardsTypeSet = new();
+
+		public CardConfigData GetCardInfoByType(string cardType)
+		{
+			return cards.Find(t => t.IncludedInPack == cardType)
+				?? throw new Exception($"{nameof(CardConfigData)} `{cardType}` not found");
+		}
 
 		public int SumCardWeights()
 		{

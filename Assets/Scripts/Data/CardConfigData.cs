@@ -12,8 +12,8 @@ public class CardConfigData : ScriptableObject
 	public string Type => type;
 
 	[field: Header("Visual")]
-	[SerializeField] private Sprite cardImage = default;
-	public Sprite CardImage => cardImage;
+	[SerializeField] private Sprite cardIcon = default;
+	public Sprite CardIcon => cardIcon;
 
 	[field: Header("Params")]
 

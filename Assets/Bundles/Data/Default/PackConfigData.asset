@@ -13,11 +13,15 @@ MonoBehaviour:
   m_Name: PackConfigData
   m_EditorClassIdentifier: 
   packs:
-  - <PackNameSetter>k__BackingField: A
-    <PackPrice>k__BackingField: 100
-  - <PackNameSetter>k__BackingField: B
-    <PackPrice>k__BackingField: 200
-  - <PackNameSetter>k__BackingField: C
-    <PackPrice>k__BackingField: 300
-  - <PackNameSetter>k__BackingField: D
-    <PackPrice>k__BackingField: 400
+  - <PackName>k__BackingField: a
+    <PackPrice>k__BackingField: 1
+    <PackIcon>k__BackingField: {fileID: 21300000, guid: 87d203c599da7244388fd26d6c885550, type: 3}
+    <PackUniqueIcon>k__BackingField: {fileID: 21300000, guid: 87d203c599da7244388fd26d6c885550, type: 3}
+  - <PackName>k__BackingField: b
+    <PackPrice>k__BackingField: 2
+    <PackIcon>k__BackingField: {fileID: 21300000, guid: f0989aaed860a144fbbf7c587c0bb5f7, type: 3}
+    <PackUniqueIcon>k__BackingField: {fileID: 21300000, guid: f0989aaed860a144fbbf7c587c0bb5f7, type: 3}
+  - <PackName>k__BackingField: car
+    <PackPrice>k__BackingField: 1234
+    <PackIcon>k__BackingField: {fileID: 0}
+    <PackUniqueIcon>k__BackingField: {fileID: 0}
