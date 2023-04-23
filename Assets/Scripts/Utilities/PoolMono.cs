@@ -46,6 +46,13 @@ public class PoolMono<T> where T : MonoBehaviour
 				item.gameObject.SetActive(true);
 				return true;
 			}
+			/*else
+			{
+				element = item;
+				item.gameObject.SetActive(false);
+				HasActiveElement(out element);
+				return true;
+			}*/
 		}
 
 		element = null;

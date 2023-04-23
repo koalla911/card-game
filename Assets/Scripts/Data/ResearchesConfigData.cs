@@ -9,6 +9,6 @@ public class ResearchesConfigData : ScriptableObject
 	[SerializeField] private int packSlots = default;
 	public int PackSlots => packSlots;
 
-	[SerializeField] private int packCapacity = default;
-	public int PackCapacity => packCapacity;
+	/*[SerializeField] private int packCapacity = default;
+	public int PackCapacity => packCapacity;*/
 }

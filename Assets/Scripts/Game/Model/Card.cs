@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Game
 {
@@ -16,6 +17,10 @@ namespace Game
 			Random randomNumber = new();
 			number = randomNumber.Next(1, capacity);
 			return number;
+		}*/
+		/*public bool IsMatch(List<CardConfigData> cards, string packName)
+		{
+			return cards.Any(t => t.IncludedInPack == packName);
 		}*/
 
 		public float P(int allWeights)

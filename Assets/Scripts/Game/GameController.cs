@@ -1,4 +1,5 @@
 ﻿using Game.UI;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -25,13 +26,27 @@ namespace Game
 		public ResearchesConfigData ResearchesConfig => researchesConfig;
 
 		[Header("Cards: Needs to be initialize something else")]
-		[SerializeField] private List<CardConfigData> cards = default;
+		[SerializeField] private List<CardConfigData> cards = new();
 		public IReadOnlyList<CardConfigData> Cards => cards;
 
-		public PackTypeInfo currentPack = default;
+		public List<CardConfigData> AvailableCards = new();
+		public List<PackTypeInfo> AvailablePacks = new();
+
+		[Header("Needed to reebase in PackDataProvider")]
+		private List<CardConfigData> selectedCards = new();
+		public List<CardConfigData> SelectedCards => selectedCards;
+		public event Action OnCardSelected;
+		public void TryAddSelectedCard(CardConfigData selectedCard)
+		{
+			selectedCards.Add(selectedCard);
+			OnCardSelected?.Invoke();
+			Debug.Log("Select card");
+		}
 
 		protected override void Awake()
 		{
+			//ResetProgress();
+
 			GenerateLevel();
 			GeneratePools();
 
@@ -86,6 +101,9 @@ namespace Game
 			PlayerPrefs.Save();
 			player.Load();
 			UnityEngine.SceneManagement.SceneManager.LoadScene("Lobby");*/
+			selectedCards.Clear();
+			AvailableCards.Clear();
+			AvailablePacks.Clear();
 		}
 	}
 }

@@ -9,32 +9,54 @@ namespace Game
 	{
 		[SerializeField] private TextMeshProUGUI price = default;
 		[SerializeField] private TextMeshProUGUI labelName = default;
-		[SerializeField] private Button packButton = default;
+		[SerializeField] private Button packIncreaseButton = default;
+		[SerializeField] private Button packDecreaseButton = default;
+		[SerializeField] private TextMeshProUGUI packCountLabel = default;
+
 		private PackTypeInfo pack = default;
+		private int packCount = default;
 
 		public void Init(PackTypeInfo pack)
 		{
-			price.SetText("price: "+ pack.PackPrice.ToString());
-			labelName.SetText("name: "+ pack.PackName.ToString());
+			this.pack = pack; 
+			price.SetText("price: "+ this.pack.PackPrice.ToString());
+			labelName.SetText("name: "+ this.pack.PackName.ToString());
+			packCount = 0;
+			packCountLabel.SetText(packCount.ToString());
 		}
 
 		private void OnEnable()
 		{
-			packButton.onClick.AddListener(SetCurrentPack);
+			packIncreaseButton.onClick.AddListener(SetCurrentPack);
+			packDecreaseButton.onClick.AddListener(RemoveCurrentPack);
 		}
 
 		private void OnDisable()
 		{
-			packButton.onClick.RemoveListener(SetCurrentPack);
-
+			packIncreaseButton.onClick.RemoveListener(SetCurrentPack);
+			packDecreaseButton.onClick.RemoveListener(RemoveCurrentPack);
 		}
 
 		private void SetCurrentPack()
 		{
-			if (pack != null)
+			var currentCards = GameController.Instance.Level.cardPackSet[this.pack];
+			GameController.Instance.AvailableCards = currentCards;
+			GameController.Instance.AvailablePacks.Add(this.pack);
+			packCount++;
+			packCountLabel.SetText(packCount.ToString());
+
+			/*for (int i = 0; i < currentCards.Count; i++)
 			{
-				GameController.Instance.currentPack = this.pack;
-			}
+				Debug.Log("Name: " + currentCards[i].name + " "
+							+ "Weight: " + currentCards[i].Weight);
+			}*/
+		}
+
+		private void RemoveCurrentPack()
+		{
+			GameController.Instance.AvailablePacks.Remove(this.pack);
+			packCount--;
+			packCountLabel.SetText(packCount.ToString());
 		}
 	}
 }

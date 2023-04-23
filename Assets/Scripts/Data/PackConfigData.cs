@@ -12,14 +12,13 @@ public class PackConfigData : ScriptableObject
 	public IReadOnlyList<PackTypeInfo> Packs => packs;
 
 	public IEnumerable<string> GetAllPackNames() => packs.Select(t => t.PackName);
-	public IEnumerable<string> GetAllCardTypes() => packs.Select(t => t.CardType);
+	//public IEnumerable<string> GetAllCardTypes() => packs.Select(t => t.CardType);
 
 	/*public PackTypeInfo GetCardTypeInfo(string packType)
 	{
 		return packs.Find(t => t.CardType == packType)
 			?? throw new UnityException($"{nameof(PackTypeInfo)} `{packType}` not found");
 	}*/
-	
 }
 
 [Serializable]

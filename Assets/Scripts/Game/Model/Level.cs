@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Game
 {
@@ -7,8 +8,9 @@ namespace Game
 	{
 		public List<CardConfigData> cards = new();
 		public List<PackTypeInfo> packs = new();
-		//public Dictionary<string, List<CardConfigData>> cardsTypeSet = new();
+		public Dictionary<PackTypeInfo, List<CardConfigData>> cardPackSet = new();
 
+		public IEnumerable<string> GetAllCardTypes() => cards.Select(t => t.IncludedInPack);
 		public CardConfigData GetCardInfoByType(string cardType)
 		{
 			return cards.Find(t => t.IncludedInPack == cardType)

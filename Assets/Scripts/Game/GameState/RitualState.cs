@@ -1,5 +1,7 @@
-﻿using Game.UI;
+﻿using DG.Tweening;
+using Game.UI;
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -10,9 +12,11 @@ namespace Game
 	{
 		[SerializeField] private Button exitButton = default;
 		[SerializeField] private ResourcesWidget resourcesWidget = default;
+		[SerializeField] private TextMeshProUGUI cardCountLabel = default;
 
 		private PoolMono<CardView> cardPool = default;
-		public UnityEvent OnClickExitButton => exitButton.onClick;
+		private int packIndex = default;
+		private int cardCount = default;
 
 		protected override void OnEnable()
 		{
@@ -20,25 +24,47 @@ namespace Game
 			//resourcesWidget.Init(GameController.Instance.ResourcesData);
 
 			cardPool = GameController.Instance.cardPool;
-			GenerateCards();
 
-			OnClickExitButton.AddListener(OnQuit);
+			packIndex = 0;
+			cardCount = 0;
+			GameController.Instance.OnCardSelected += GetCardsByPack;
+			GetCardsByPack();
+
+			exitButton.onClick.AddListener(OnQuit);
 		}
 
 		protected override void OnDisable()
 		{
-			OnClickExitButton.RemoveListener(OnQuit);
+			exitButton.onClick.RemoveListener(OnQuit);
+			GameController.Instance.OnCardSelected -= GetCardsByPack;
+
 			base.OnDisable();
 		}
 
-		private void GenerateCards()
+		public void GetCardsByPack()
+		{
+			if (GameController.Instance.AvailablePacks.Count > 0)
+			{
+				if (packIndex >= GameController.Instance.AvailablePacks.Count)
+				{
+					OnQuit();
+				}
+				else
+				{
+					DisablePool();
+					GenerateCards(GameController.Instance.AvailablePacks[packIndex]);
+					cardCount++;
+					packIndex++;
+				}
+			}
+
+			cardCountLabel.SetText("Select your {0} card!", cardCount);
+		}
+
+		private void GenerateCards(PackTypeInfo pack)
 		{
 			Level level = GameController.Instance.Level;
-			if (GameController.Instance.currentPack != null)
-			{
-				var allCards = level.GetCardInfoByType(GameController.Instance.currentPack.CardType);
-				Debug.Log(allCards);
-			}
+			var availableCards = GameController.Instance.AvailableCards;
 
 			if (level != null)
 			{
@@ -46,29 +72,28 @@ namespace Game
 				while (j < GameController.Instance.ResearchesConfig.PackSlots)
 				{
 					System.Random randomNumber = new();
-					int rn = randomNumber.Next(0, level.cards.Count);
+					int rn = randomNumber.Next(0, availableCards.Count);
 					float k = K();
 
-					if (level.cards[rn].P >= k)
+					if (availableCards[rn].P >= k)
 					{
 						CardView cardView = cardPool.GetActive();
+						cardView.Init(availableCards[rn], pack);
 
-						cardView.Init(level.cards[rn]);
-
-						/*Debug.Log("Number: " + level.cards[rn].Number + " "
-							+ "Weight: " + level.cards[rn].Weight + " "
-							+ "P: " + level.cards[rn].P.ToString("F2") + " "
+						/*Debug.Log("Name: " + availableCards[rn].name + " "
+							+ "Weight: " + availableCards[rn].Weight + " "
+							+ "P: " + availableCards[rn].P.ToString("F2") + " "
 							+ "K: " + k.ToString("F2"));*/
 
 						j++;
 					}
-					/*else
+					else
 					{
-						Debug.Log("unsuitable Number: " + level.cards[rn].Number + " "
-							+ "Weight: " + level.cards[rn].Weight + " "
-							+ "P: " + level.cards[rn].P.ToString("F2") + " "
-							+ "K: " + k.ToString("F2"));
-					}*/
+						/*Debug.Log("unsuitable: " + availableCards[rn].name + " "
+							+ "Weight: " + availableCards[rn].Weight + " "
+							+ "P: " + availableCards[rn].P.ToString("F2") + " "
+							+ "K: " + k.ToString("F2"));*/
+					}
 				}
 			}
 		}
