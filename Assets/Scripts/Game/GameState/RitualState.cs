@@ -27,7 +27,7 @@ namespace Game
 
 			packIndex = 0;
 			cardCount = 0;
-			GameController.Instance.OnCardSelected += GetCardsByPack;
+			GameController.Instance.PackProvider.OnCardSelected += GetCardsByPack;
 			GetCardsByPack();
 
 			exitButton.onClick.AddListener(OnQuit);
@@ -36,23 +36,23 @@ namespace Game
 		protected override void OnDisable()
 		{
 			exitButton.onClick.RemoveListener(OnQuit);
-			GameController.Instance.OnCardSelected -= GetCardsByPack;
+			GameController.Instance.PackProvider.OnCardSelected -= GetCardsByPack;
 
 			base.OnDisable();
 		}
 
 		public void GetCardsByPack()
 		{
-			if (GameController.Instance.AvailablePacks.Count > 0)
+			if (GameController.Instance.PackProvider.AvailablePacks.Count > 0)
 			{
-				if (packIndex >= GameController.Instance.AvailablePacks.Count)
+				if (packIndex >= GameController.Instance.PackProvider.AvailablePacks.Count)
 				{
 					OnQuit();
 				}
 				else
 				{
 					DisablePool();
-					GenerateCards(GameController.Instance.AvailablePacks[packIndex]);
+					GenerateCards(GameController.Instance.PackProvider.AvailablePacks[packIndex]);
 					cardCount++;
 					packIndex++;
 				}
@@ -64,7 +64,7 @@ namespace Game
 		private void GenerateCards(PackTypeInfo pack)
 		{
 			Level level = GameController.Instance.Level;
-			var availableCards = GameController.Instance.AvailableCards;
+			var availableCards = GameController.Instance.PackProvider.AvailableCards;
 
 			if (level != null)
 			{

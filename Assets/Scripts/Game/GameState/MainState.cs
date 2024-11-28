@@ -33,7 +33,7 @@ namespace Game
 			ritualsButton.onClick.AddListener(OpenRituals);
 			removeRitualsButton.onClick.AddListener(RemoveRituals);
 
-			GameController.Instance.OnCardSelected += ShowSelectedCards;
+			GameController.Instance.PackProvider.OnCardSelected += ShowSelectedCards;
 			ShowSelectedCards();
 		}
 
@@ -42,7 +42,7 @@ namespace Game
 			ritualsButton.onClick.RemoveListener(OpenRituals);
 			removeRitualsButton.onClick.AddListener(RemoveRituals);
 			DisablePool();
-			GameController.Instance.OnCardSelected -= ShowSelectedCards;
+			GameController.Instance.PackProvider.OnCardSelected -= ShowSelectedCards;
 
 			base.OnDisable();
 		}
@@ -60,10 +60,10 @@ namespace Game
 
 		private void ShowSelectedCards()
 		{
-			selectedCardsLabel.gameObject.SetActive(GameController.Instance.SelectedCards.Count > 0);
-			if(GameController.Instance.SelectedCards.Count > 0)
+			selectedCardsLabel.gameObject.SetActive(GameController.Instance.PackProvider.SelectedCards.Count > 0);
+			if(GameController.Instance.PackProvider.SelectedCards.Count > 0)
 			{
-				foreach(var card in GameController.Instance.SelectedCards)
+				foreach(var card in GameController.Instance.PackProvider.SelectedCards)
 				{
 					cardsString.Append(card.name + ", ");
 				}
@@ -73,7 +73,7 @@ namespace Game
 
 		private void OpenRituals()
 		{
-			if (GameController.Instance.AvailablePacks != null)
+			if (GameController.Instance.PackProvider.AvailablePacks != null)
 			{
 				Switch<RitualState>();
 			}
@@ -81,9 +81,9 @@ namespace Game
 
 		private void RemoveRituals()
 		{
-			if (GameController.Instance.AvailablePacks.Count > 0)
+			if (GameController.Instance.PackProvider.AvailablePacks.Count > 0)
 			{
-				GameController.Instance.AvailablePacks.Clear();
+				GameController.Instance.PackProvider.AvailablePacks.Clear();
 				for (int i = 0; i < level.packs.Count; i++)
 				{
 					packViews[i].Init(level.packs[i]);

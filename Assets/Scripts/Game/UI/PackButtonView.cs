@@ -40,8 +40,8 @@ namespace Game
 		private void SetCurrentPack()
 		{
 			var currentCards = GameController.Instance.Level.cardPackSet[this.pack];
-			GameController.Instance.AvailableCards = currentCards;
-			GameController.Instance.AvailablePacks.Add(this.pack);
+			GameController.Instance.PackProvider.AvailableCards = currentCards;
+			GameController.Instance.PackProvider.AvailablePacks.Add(this.pack);
 			packCount++;
 			packCountLabel.SetText(packCount.ToString());
 
@@ -54,7 +54,7 @@ namespace Game
 
 		private void RemoveCurrentPack()
 		{
-			GameController.Instance.AvailablePacks.Remove(this.pack);
+			GameController.Instance.PackProvider.AvailablePacks.Remove(this.pack);
 			packCount--;
 			packCountLabel.SetText(packCount.ToString());
 		}

@@ -2612,19 +2612,6 @@ MonoBehaviour:
   packConfig: {fileID: 11400000, guid: f4d91cd20c44c454d8ee91b7199f047d, type: 2}
   resourcesConfig: {fileID: 11400000, guid: feba846b5f53c5943bfdbd40811149ea, type: 2}
   researchesConfig: {fileID: 11400000, guid: a7231b7271d6d7f468fae02ec116c53a, type: 2}
-  cards:
-  - {fileID: 11400000, guid: cfcf6bac1f4df814fb28bfae27a482cd, type: 2}
-  - {fileID: 11400000, guid: 928901c27b333e748b7a09a61018c8bc, type: 2}
-  - {fileID: 11400000, guid: 69c899a5ccea41c4f860305701700b72, type: 2}
-  - {fileID: 11400000, guid: 960b64d31cd0c124ba1d9a84577ebb2c, type: 2}
-  - {fileID: 11400000, guid: bf455fd088c2c0046af6a9b56b5d89a2, type: 2}
-  - {fileID: 11400000, guid: 050ebe009e589034e9c3a66b4c233d73, type: 2}
-  - {fileID: 11400000, guid: 2b1281b954177c341ab6ca1c2a1ed0c4, type: 2}
-  - {fileID: 11400000, guid: 67d8c57e36f3ec44789d13d6e42e8c93, type: 2}
-  - {fileID: 11400000, guid: 0126d681fe9891b40955210d14993ade, type: 2}
-  - {fileID: 11400000, guid: 0b5ad7f9308caed4288d107e43fad141, type: 2}
-  AvailableCards: []
-  AvailablePacks: []
   packBtnPrefab: {fileID: 5961993933855857092, guid: cf3ddb310db77604cae7b0ad6f209c89, type: 3}
   packsBtnParent: {fileID: 898939298}
   cardPrefab: {fileID: 1822862821369218889, guid: ade2916806cbb7448992924ee49377f0, type: 3}

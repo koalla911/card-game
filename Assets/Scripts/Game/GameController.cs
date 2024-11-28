@@ -12,7 +12,9 @@ namespace Game
 		[SerializeField] private SimpleLevelGenerator levelGenerator = default;
 
 		public ResourcesDataProvider ResourcesProvider { get; set; }
+		public PackDataProvider PackProvider { get; set; }
 		public SaveService SaveService{ get; set; }
+
 		public Level Level { get; private set; }
 
 		[Header("Needs to be initialize in ConfigHolder")]
@@ -25,28 +27,8 @@ namespace Game
 		[SerializeField] private ResearchesConfigData researchesConfig = default;
 		public ResearchesConfigData ResearchesConfig => researchesConfig;
 
-		[Header("Cards: Needs to be initialize something else")]
-		[SerializeField] private List<CardConfigData> cards = new();
-		public IReadOnlyList<CardConfigData> Cards => cards;
-
-		public List<CardConfigData> AvailableCards = new();
-		public List<PackTypeInfo> AvailablePacks = new();
-
-		[Header("Needed to reebase in PackDataProvider")]
-		private List<CardConfigData> selectedCards = new();
-		public List<CardConfigData> SelectedCards => selectedCards;
-		public event Action OnCardSelected;
-		public void TryAddSelectedCard(CardConfigData selectedCard)
-		{
-			selectedCards.Add(selectedCard);
-			OnCardSelected?.Invoke();
-			Debug.Log("Select card");
-		}
-
 		protected override void Awake()
 		{
-			//ResetProgress();
-
 			GenerateLevel();
 			GeneratePools();
 
@@ -56,8 +38,9 @@ namespace Game
 			ResourcesProvider = new ResourcesDataProvider(SaveService, resourcesConfig);
 			ResourcesProvider.SetStartResources();
 
-			GameState.Init<MainState>();
+			PackProvider = new PackDataProvider();
 
+			GameState.Init<MainState>();
 		}
 
 		//TODO: Simple Card Generator
@@ -93,17 +76,6 @@ namespace Game
 					Destroy(layout.transform.GetChild(i).gameObject);
 				}
 			}
-		}
-
-		public void ResetProgress()
-		{
-			/*PlayerPrefs.DeleteAll();
-			PlayerPrefs.Save();
-			player.Load();
-			UnityEngine.SceneManagement.SceneManager.LoadScene("Lobby");*/
-			selectedCards.Clear();
-			AvailableCards.Clear();
-			AvailablePacks.Clear();
 		}
 	}
 }

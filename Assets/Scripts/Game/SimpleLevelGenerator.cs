@@ -44,9 +44,9 @@ namespace Game
 		public List<CardConfigData> GenerateCards()
 		{
 			List<CardConfigData> cards = new();
-			for (int i = 0; i < GameController.Instance.Cards.Count; i++)
+			for (int i = 0; i < GameController.Instance.PackProvider.Cards.Count; i++)
 			{
-				cards.Add(GameController.Instance.Cards[i]);
+				cards.Add(GameController.Instance.PackProvider.Cards[i]);
 				//cards[i].SetNumber(i + 1);
 			}
 			return cards;

@@ -36,7 +36,7 @@ namespace Game
 
 		public void SetActiveCard()
 		{
-			GameController.Instance.TryAddSelectedCard(this.card);
+			GameController.Instance.PackProvider.TryAddSelectedCard(this.card);
 			//OnCardSelected?.Invoke();
 		}
 
